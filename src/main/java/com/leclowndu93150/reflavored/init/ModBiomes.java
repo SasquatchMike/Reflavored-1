@@ -34,22 +34,13 @@ public class ModBiomes {
     private static Biome redwoodForest(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
         BiomeGenerationSettings.Builder generationBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         
-        BiomeDefaultFeatures.addDefaultCarversAndLakes(generationBuilder);
-        BiomeDefaultFeatures.addDefaultCrystalFormations(generationBuilder);
-        BiomeDefaultFeatures.addDefaultMonsterRoom(generationBuilder);
-        BiomeDefaultFeatures.addDefaultUndergroundVariety(generationBuilder);
-        BiomeDefaultFeatures.addDefaultOres(generationBuilder);
-        BiomeDefaultFeatures.addDefaultSoftDisks(generationBuilder);
-        BiomeDefaultFeatures.addDefaultGrass(generationBuilder);
-        BiomeDefaultFeatures.addDefaultMushrooms(generationBuilder);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(generationBuilder);
-        BiomeDefaultFeatures.addMossyStoneBlock(generationBuilder);
-        BiomeDefaultFeatures.addFerns(generationBuilder);
-        
         generationBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatures.getOrThrow(ModPlacedFeatures.REDWOOD_TREES));
         generationBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatures.getOrThrow(ModPlacedFeatures.PATCH_DOUGLAS_IRIS));
         generationBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatures.getOrThrow(ModPlacedFeatures.PATCH_TRILLIUM));
         generationBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatures.getOrThrow(ModPlacedFeatures.PATCH_ALPINE_LILY));
+        generationBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatures.getOrThrow(ModPlacedFeatures.BROWN_MUSHROOM_REDWOOD));
+        generationBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatures.getOrThrow(ModPlacedFeatures.RED_MUSHROOM_REDWOOD));
+        generationBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatures.getOrThrow(ModPlacedFeatures.PATCH_GRASS_REDWOOD));
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         
