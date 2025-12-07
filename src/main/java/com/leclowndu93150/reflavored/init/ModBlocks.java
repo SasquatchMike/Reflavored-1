@@ -100,7 +100,7 @@ public class ModBlocks {
             }
     );
 
-/*
+
     public static final DeferredBlock<Block> LAVENDER_WOOL = BLOCKS.registerSimpleBlock(
             "lavender_wool",
             BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WOOL)
@@ -124,28 +124,28 @@ public class ModBlocks {
             )
     );
 
-    public static final DeferredBlock<StainedGlassBlock> LAVENDER_GLASS = BLOCKS.register(
-            "lavender_glass",
-            () -> new StainedGlassBlock(
-                    DyeColor.PURPLE,
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_STAINED_GLASS)
-            )
-    );
-
-    public static final DeferredBlock<StainedGlassBlock> LAVENDER_GLASS_TOP = BLOCKS.register(
-            "lavender_glass_top",
-            () -> new StainedGlassBlock(
-                    DyeColor.PURPLE,
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_STAINED_GLASS)
-            )
-    );
+//    public static final DeferredBlock<StainedGlassBlock> LAVENDER_GLASS = BLOCKS.register(
+//            "lavender_glass",
+//            () -> new StainedGlassBlock(
+//                    DyeColor.PURPLE,
+//                    BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_STAINED_GLASS)
+//            )
+//    );
+//
+//    public static final DeferredBlock<StainedGlassBlock> LAVENDER_GLASS_TOP = BLOCKS.register(
+//            "lavender_glass_top",
+//            () -> new StainedGlassBlock(
+//                    DyeColor.PURPLE,
+//                    BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_STAINED_GLASS)
+//            )
+//    );
 
     public static final DeferredBlock<GlazedTerracottaBlock> LAVENDER_GLAZED_TERRACOTTA = BLOCKS.register(
             "lavender_glazed_terracotta",
             () -> new GlazedTerracottaBlock(
                     BlockBehaviour.Properties.ofFullCopy(Blocks.PURPLE_GLAZED_TERRACOTTA)
             )
-    );*/
+    );
 
     public static final DeferredBlock<LavenderCandleBlock> LAVENDER_CANDLE = BLOCKS.register(
             "lavender_candle",

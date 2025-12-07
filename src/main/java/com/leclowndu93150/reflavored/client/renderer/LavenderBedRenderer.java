@@ -16,18 +16,18 @@ import net.minecraft.client.resources.model.Material;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.BedBlock;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BedPart;
 
 public class LavenderBedRenderer implements BlockEntityRenderer<LavenderBedBlockEntity> {
-    private final ModelPart headRoot;
-    private final ModelPart footRoot;
 
     public static final Material LAVENDER_BED_TEXTURE = new Material(
             Sheets.BED_SHEET,
-            ResourceLocation.fromNamespaceAndPath(Redflavored.MODID, "textures/block/lavender_bed.png")
+            ResourceLocation.fromNamespaceAndPath(Redflavored.MODID, "entity/bed/lavender_bed")
     );
+
+    private final ModelPart headRoot;
+    private final ModelPart footRoot;
 
     public LavenderBedRenderer(BlockEntityRendererProvider.Context context) {
         this.headRoot = context.bakeLayer(ModelLayers.BED_HEAD);
@@ -35,24 +35,31 @@ public class LavenderBedRenderer implements BlockEntityRenderer<LavenderBedBlock
     }
 
     @Override
-    public void render(LavenderBedBlockEntity bedEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+    public void render(LavenderBedBlockEntity bedEntity, float partialTick,
+                       PoseStack poseStack, MultiBufferSource bufferSource,
+                       int packedLight, int packedOverlay) {
+
         BlockState state = bedEntity.getBlockState();
-        boolean isHead = state.getValue(BedBlock.PART) == BedPart.HEAD;
-        ModelPart part = isHead ? this.headRoot : this.footRoot;
-        Direction direction = state.getValue(BedBlock.FACING);
+        if (!(state.getBlock() instanceof BedBlock)) {
+            return;
+        }
 
-        renderPiece(poseStack, bufferSource, part, direction, LAVENDER_BED_TEXTURE, packedLight, packedOverlay, !isHead);
-    }
+        Direction facing = state.getValue(BedBlock.FACING);
+        BedPart part = state.getValue(BedBlock.PART);
+        ModelPart model = (part == BedPart.HEAD) ? this.headRoot : this.footRoot;
 
-    private void renderPiece(PoseStack poseStack, MultiBufferSource bufferSource, ModelPart part, Direction facing, Material material, int packedLight, int packedOverlay, boolean renderFoot) {
         poseStack.pushPose();
-        poseStack.translate(0.0F, 0.5625F, renderFoot ? -1.0F : 0.0F);
+
+        // Same transform as vanilla, but no extra offset for the other half
+        poseStack.translate(0.0F, 0.5625F, 0.0F);
         poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
         poseStack.translate(0.5F, 0.5F, 0.5F);
         poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F + facing.toYRot()));
         poseStack.translate(-0.5F, -0.5F, -0.5F);
-        VertexConsumer vertexconsumer = material.buffer(bufferSource, RenderType::entitySolid);
-        part.render(poseStack, vertexconsumer, packedLight, packedOverlay);
+
+        VertexConsumer vc = LAVENDER_BED_TEXTURE.buffer(bufferSource, RenderType::entitySolid);
+        model.render(poseStack, vc, packedLight, packedOverlay);
+
         poseStack.popPose();
     }
 }

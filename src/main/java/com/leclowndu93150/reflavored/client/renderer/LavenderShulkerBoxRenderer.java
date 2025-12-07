@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.ShulkerBoxBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class LavenderShulkerBoxRenderer implements BlockEntityRenderer<LavenderShulkerBoxBlockEntity> {
-    private static final ResourceLocation LAVENDER_TEXTURE = ResourceLocation.fromNamespaceAndPath("reflavored", "textures/entity/shulker/lavender_shulker_box");
+    private static final ResourceLocation LAVENDER_TEXTURE = ResourceLocation.fromNamespaceAndPath("reflavored", "textures/entity/shulker/lavender_shulker_box.png");
     private final ShulkerModel<?> model;
 
     public LavenderShulkerBoxRenderer(BlockEntityRendererProvider.Context context) {
@@ -25,7 +25,7 @@ public class LavenderShulkerBoxRenderer implements BlockEntityRenderer<LavenderS
 
     @Override
     public void render(LavenderShulkerBoxBlockEntity blockEntity, float partialTick, PoseStack stack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
-        ResourceLocation texture = ResourceLocation.fromNamespaceAndPath("reflavored", "textures/entity/shulker/lavender_shulker_box");
+        ResourceLocation texture = ResourceLocation.fromNamespaceAndPath("reflavored", "textures/entity/shulker/shulker_lavender.png");
 
 
         Direction direction = Direction.UP;
@@ -42,11 +42,13 @@ public class LavenderShulkerBoxRenderer implements BlockEntityRenderer<LavenderS
         stack.translate(0.0F, -1.0F, 0.0F);
 
         ModelPart lid = this.model.getLid();
-        lid.setPos(0.0F, 24.0F - blockEntity.getProgress(partialTick) * 0.5F * 16.0F, 0.0F);
-        lid.yRot = 270.0F * blockEntity.getProgress(partialTick) * ((float)Math.PI / 180F);
-        VertexConsumer vertexConsumer = buffer.getBuffer(RenderType.entityCutout(texture));
+        float progress = blockEntity.getProgress(partialTick);
+        lid.setPos(0.0F, 24.0F - progress * 0.5F * 16.0F, 0.0F);
+        lid.yRot = 270.0F * progress * ((float) Math.PI / 180F);
+        VertexConsumer vertexConsumer =
+                buffer.getBuffer(RenderType.entityCutoutNoCull(texture));
         this.model.renderToBuffer(stack, vertexConsumer, packedLight, packedOverlay);
-
         stack.popPose();
+
     }
 }
