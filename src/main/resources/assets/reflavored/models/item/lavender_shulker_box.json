@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "reflavored:block/lavender_shulker_box"
+  }
+}
