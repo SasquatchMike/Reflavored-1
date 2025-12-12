@@ -1,5 +1,6 @@
 package com.leclowndu93150.reflavored.init;
 
+import com.jcraft.jorbis.Block;
 import com.leclowndu93150.reflavored.Redflavored;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -50,6 +51,11 @@ public class ModPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> LAVENDER_ROCK = createKey("lavender_rock");
     public static final ResourceKey<PlacedFeature> LAVENDER_ROCKY_PATCH = createKey("lavender_rocky_patch");
+    public static final ResourceKey<PlacedFeature> GRANITE_ROCK = createKey("granite_rock");
+    public static final ResourceKey<PlacedFeature> GRANITE_ROCKY_PATCH = createKey("granite_rocky_patch");
+
+    public static final ResourceKey<PlacedFeature> GRANITE_BOULDER = createKey("granite_boulder");
+
 
 
     public static ResourceKey<PlacedFeature> createKey(String name) {
@@ -176,6 +182,32 @@ public class ModPlacedFeatures {
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                 BiomeFilter.biome());
+
+        register(context,
+                GRANITE_ROCK,
+                configuredFeatures.getOrThrow(ModConfiguredFeatures.GRANITE_ROCK),
+                RarityFilter.onAverageOnceEvery(12),
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                BiomeFilter.biome());
+
+        register(context,
+                GRANITE_ROCKY_PATCH,
+                configuredFeatures.getOrThrow(ModConfiguredFeatures.GRANITE_ROCKY_PATCH),
+                RarityFilter.onAverageOnceEvery(6),
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                BiomeFilter.biome());
+
+        register(
+                context,
+                GRANITE_BOULDER,
+                configuredFeatures.getOrThrow(ModConfiguredFeatures.GRANITE_BOULDER),
+                RarityFilter.onAverageOnceEvery(10),          // 1 per ~10 chunks on average
+                InSquarePlacement.spread(),                   // spread within the chunk
+                PlacementUtils.HEIGHTMAP_WORLD_SURFACE,       // sit on the terrain
+                BiomeFilter.biome()                           // respect the biome
+        );
 
 
     }

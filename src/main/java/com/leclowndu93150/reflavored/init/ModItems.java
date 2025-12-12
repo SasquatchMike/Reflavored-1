@@ -25,6 +25,8 @@ public class ModItems {
     public static final DeferredItem<BlockItem> REDWOOD_BUTTON = ITEMS.registerSimpleBlockItem("redwood_button", ModBlocks.REDWOOD_BUTTON);
     public static final DeferredItem<BlockItem> REDWOOD_SAPLING = ITEMS.registerSimpleBlockItem("redwood_sapling", ModBlocks.REDWOOD_SAPLING);
 
+    public static final DeferredItem<Item> LAVENDER_DYE = ITEMS.registerItem("lavender_dye", properties -> new Item(properties));
+
     public static final DeferredItem<SignItem> REDWOOD_SIGN = ITEMS.register("redwood_sign",
             () -> new SignItem(new Item.Properties().stacksTo(16), ModBlocks.REDWOOD_SIGN.get(), ModBlocks.REDWOOD_WALL_SIGN.get()));
 
@@ -49,7 +51,6 @@ public class ModItems {
     public static final DeferredItem<BlockItem> PINK_LILY = ITEMS.register("pink_rose_bush",
             () -> new DoubleHighBlockItem(ModBlocks.PINK_LILY.get(), new Item.Properties()));
 
-    // In your ModItems class
     public static final DeferredItem<BlockItem> LAVENDER_CANDLE = ITEMS.register("lavender_candle",
             () -> new BlockItem(ModBlocks.LAVENDER_CANDLE.get(), new Item.Properties()));
 
@@ -58,6 +59,12 @@ public class ModItems {
 
     public static final DeferredItem<BlockItem> LAVENDER_SHULKER_BOX = ITEMS.register("lavender_shulker_box",
             () -> new BlockItem(ModBlocks.LAVENDER_SHULKER_BOX.get(), new Item.Properties()));
+
+    public static final DeferredItem<BlockItem> LAVENDER_WOOL = ITEMS.registerSimpleBlockItem("lavender_wool", ModBlocks.LAVENDER_WOOL);
+    public static final DeferredItem<BlockItem> LAVENDER_TERRACOTTA = ITEMS.registerSimpleBlockItem("lavender_terracotta", ModBlocks.LAVENDER_TERRACOTTA);
+    public static final DeferredItem<BlockItem> LAVENDER_GLAZED_TERRACOTTA = ITEMS.registerSimpleBlockItem("lavender_glazed_terracotta", ModBlocks.LAVENDER_GLAZED_TERRACOTTA);
+    public static final DeferredItem<BlockItem> LAVENDER_CONCRETE = ITEMS.registerSimpleBlockItem("lavender_concrete", ModBlocks.LAVENDER_CONCRETE);
+    public static final DeferredItem<BlockItem> LAVENDER_CONCRETE_POWDER = ITEMS.registerSimpleBlockItem("lavender_concrete_powder", ModBlocks.LAVENDER_CONCRETE_POWDER);
 
 
     public static final DeferredItem<BlockItem> LAVENDER = ITEMS.registerSimpleBlockItem("lavender", ModBlocks.LAVENDER);
