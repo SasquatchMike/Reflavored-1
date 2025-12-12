@@ -1,6 +1,6 @@
 {
   "parent": "builtin/entity",
   "textures": {
-    "particle": "reflavored:textures/entity/lavender_bed.png"
+    "particle": "minecraft:block/oak_planks"
   }
 }
